@@ -1,8 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
-import bodyParser from 'express'
-import userRouter from './routes/user.js'
-import recipeRouter from './routes/recipe.js'
+// import bodyParser from 'express'
+// import userRouter from './routes/user.js'
+// import recipeRouter from './routes/recipe.js'
 import cors from 'cors'
 const app = express(); 
 
@@ -15,10 +15,10 @@ const app = express();
 // }))
 
 // userRouter
-app.use('/api',userRouter)
+// app.use('/api',userRouter)
 
-// recipeRouter
-app.use('/api',recipeRouter)
+// // recipeRouter
+// app.use('/api',recipeRouter)
 
 mongoose
   .connect(

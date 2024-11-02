@@ -12,11 +12,11 @@ router.post("/register", (req,res)=>{
 });
 
 // user login
-router.post('/login',login)
+// router.post('/login',login)
 
 // profile
 
-router.get('/user',Authenticate,profile)
+// router.get('/user',Authenticate,profile)
 
 
 export default router
