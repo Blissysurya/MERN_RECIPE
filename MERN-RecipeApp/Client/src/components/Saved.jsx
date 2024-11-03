@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { AppContext } from "../context/App_Context";
-import FetchRecipeById from "./FetchRecipeById";
+import { AppContext } from "../context/App_Context.jsx";
+import FetchRecipeById from "./FetchRecipeById.jsx";
 
 const Saved = () => {
   const { savedRecipe } = useContext(AppContext);

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import FetchRecipeById from "./FetchRecipeById";
+import FetchRecipeById from "./FetchRecipeById.jsx";
 const Detail = () => {
   const { id } = useParams();
 

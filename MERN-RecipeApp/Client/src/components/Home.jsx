@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from "../context/App_Context";
+import { AppContext } from "../context/App_Context.jsx";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

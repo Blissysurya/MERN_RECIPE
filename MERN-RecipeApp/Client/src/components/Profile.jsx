@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../context/App_Context'
+import { AppContext } from '../context/App_Context.jsx'
 const Profile = () => {
   const { user, userRecipe } = useContext(AppContext);
   return (

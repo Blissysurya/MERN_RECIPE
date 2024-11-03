@@ -1,18 +1,28 @@
 import express from 'express'
-import { register,login, profile } from '../controllers/user.js';
+import { add, getAllRecipe, getRecipeById, getRecipeByUserId, getSavedRecipe, savedRecipeById } from '../controllers/recipe.js';
+
 import { Authenticate } from '../middlewares/auth.js';
 
 const router = express.Router();
 
-// user register
-router.post("/register", register);
+// create recipe
+router.post('/add',Authenticate, add)
 
-// user login
-router.post('/login',login)
+// get all recipe
+router.get('/',getAllRecipe)
 
-// profile
+// get all saved Recipe
+router.get('/saved',getSavedRecipe)
 
-router.get('/user',Authenticate,profile)
+// get recipe by Id
+router.get('/:id',getRecipeById)
+
+// get recipe by userId
+router.get('/user/:id',getRecipeByUserId)
+
+// saved Recipe by Id
+router.post("/:id", Authenticate, savedRecipeById);
 
 
-export default router
+
+export default router;

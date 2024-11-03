@@ -16,3 +16,4 @@ router.get('/user',Authenticate,profile)
 
 
 export default router
+
