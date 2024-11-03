@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AppContext } from "./App_Context.jsx";
+import { AppContext } from "./App_Context";
 import axios from "axios";
 
 const App_State = (props) => {

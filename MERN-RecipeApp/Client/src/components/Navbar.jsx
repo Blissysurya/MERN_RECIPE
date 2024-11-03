@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../context/App_Context.jsx";
+import { AppContext } from "../context/App_Context";
 
 const Navbar = () => {
   const {isAuthenticated, setisAuthenticated,logOut} = useContext(AppContext)

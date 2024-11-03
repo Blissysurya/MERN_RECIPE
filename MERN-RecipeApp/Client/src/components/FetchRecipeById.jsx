@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../context/App_Context.jsx";
+import { AppContext } from "../context/App_Context";
 import { Link , useLocation} from "react-router-dom";
 
 const FetchRecipeById = ({ id }) => {
