@@ -40,6 +40,10 @@ export const login=async (req,res) =>{
             res.json({message:`welcome ${user.name}`,token})
 
         }catch(error){
-
+            res.json({message:error.message})
         }
+}
+
+export const profile =async(req,res)=>{
+    res.json({user:req.user})
 }
