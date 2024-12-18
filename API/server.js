@@ -8,7 +8,8 @@ const app=express();
 app.use(bodyParser.json());
 app.use(cors({
     origin:true,
-    methods:["GET","POST","PUT","DELETE"]
+    methods:["GET","POST","PUT","DELETE"],
+    credentials:true
 }))
 app.use("/api",userRouter)
 
