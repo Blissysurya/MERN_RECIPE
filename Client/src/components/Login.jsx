@@ -1,19 +1,37 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/App_Context'
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import {useNavigate} from 'react-router-dom'
 function Login() {
 
-
+  const navigate=useNavigate()
     const {login}=useContext(AppContext)
     const [gmail, setgmail] = useState("")
     const [password, setpassword] = useState("")
     const loginHandler= async(e) =>{
         e.preventDefault();
         const result = await login(gmail,password)
-        console.log(result.data);
+        toast.success(result.data.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+          });
+        // console.log(result.data);
+        setTimeout(() => {
+          navigate('/')
+        }, 1000);
     }
 
   return (
     <>
+    <ToastContainer
+      position="top-right"/>
     <div className='container my-5 p-5' style={{width:"500px",border:'2px solid yellow',borderRadius:'10px'}}>
         <h2 className='text-center'>Login</h2>
 
