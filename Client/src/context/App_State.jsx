@@ -6,6 +6,31 @@ function App_State(props) {
   const url="http://localhost:3000/api";
 
   const [token, setToken] = useState("");
+  const [recipe, setRecipe] = useState([]);
+
+  useEffect(() => {
+    const fetchRecipe=async()=>{
+
+      const api=await axios.get(`${url}/`,
+        {
+          header:{
+            "Content-Type":"application/json",
+
+          },
+          withCredentials:true
+        }
+      )
+      console.log(api.data.recipe)
+      setRecipe(api.data.recipe)
+  }
+  fetchRecipe();
+} , [])
+
+
+
+
+
+
 
   
   useEffect(() => {
@@ -46,19 +71,20 @@ const register = async (name,gmail,password)=>{
   }
 
   const addRecipe=async (title,ist,ing1,ing2,ing3,ing4,qty1,qty2,qty3,qty4,imgurl)=>{
-    const api=await axios.post(`${url}/login`,{
+    const api=await axios.post(`${url}/add`,{
 
       title,ist,ing1,ing2,ing3,ing4,qty1,qty2,qty3,qty4,imgurl
     },{
       headers:{
-        "Content-Type":"application/json"
+        "Content-Type":"application/json",
+        Auth:token
       },
       withCredentials:true
     })
     return api
   }
   return (
-    <AppContext.Provider value={{login,register,addRecipe}}> {props.children}  </AppContext.Provider>
+    <AppContext.Provider value={{login,register,addRecipe,recipe}}> {props.children}  </AppContext.Provider>
   )
 }
 
