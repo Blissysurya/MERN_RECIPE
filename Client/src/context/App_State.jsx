@@ -12,6 +12,7 @@ function App_State(props) {
   const [userId,setuserId]=useState("")
   const [userRecipe,setuserRecipe]=useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [reload,setreload]=useState(true)
 
   useEffect(() => {
     const fetchRecipe=async()=>{
@@ -32,7 +33,7 @@ function App_State(props) {
   getSavedRecipeById();
   profile();
   recipeByUser(userId);
-} , [token,userId])
+} , [token,userId,reload])
 
   //saving token to local storage  
 
@@ -48,7 +49,7 @@ function App_State(props) {
       setIsAuthenticated(true)
     }
 
-  }, [token])
+  }, [token,reload])
 
   useEffect(() => {
   //  login('Suryanshji@gmail.com',"12345")
@@ -103,6 +104,7 @@ const register = async (name,gmail,password)=>{
       },
       withCredentials:true
     })
+    setreload(!reload);
     return api
   };
 
@@ -130,6 +132,7 @@ const register = async (name,gmail,password)=>{
     })
     setToken(api.data.token)
     // console.log("login data", api)
+    setreload(!reload);
     return api
   }
 
@@ -187,7 +190,7 @@ const logOut=()=>{
 
 
   return (
-    <AppContext.Provider value={{login,register,addRecipe,recipe,getRecipeById,savedRecipeById,savedRecipe,user,userRecipe,isAuthenticated,setIsAuthenticated}}> {props.children}  </AppContext.Provider>
+    <AppContext.Provider value={{login,register,addRecipe,recipe,getRecipeById,savedRecipeById,savedRecipe,user,userRecipe,isAuthenticated,setIsAuthenticated,logOut}}> {props.children}  </AppContext.Provider>
   )
 }
 
