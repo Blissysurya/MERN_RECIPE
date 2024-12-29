@@ -82,9 +82,24 @@ const register = async (name,gmail,password)=>{
       withCredentials:true
     })
     return api
+  };
+
+  //recipe by id
+
+  const getRecipeById= async (id)=>{
+    const api=await axios.get(`${url}/${id}`,{
+      headers:{
+        "Content-Type":"application/json"
+      },
+      withCredentials:true
+    })
+    setToken(api.data.token)
+    // console.log("login data", api)
+    return api
   }
+
   return (
-    <AppContext.Provider value={{login,register,addRecipe,recipe}}> {props.children}  </AppContext.Provider>
+    <AppContext.Provider value={{login,register,addRecipe,recipe,getRecipeById}}> {props.children}  </AppContext.Provider>
   )
 }
 

@@ -7,6 +7,7 @@ import {BrowserRouter as Router,Routes,Route} from  'react-router-dom'
 import Saved from './components/Saved.jsx'
 import Home from './components/Home'
 import Profile from './components/Profile'
+import FetchRecipeById from './components/FetchRecipeById.jsx'
 function App() {
   return (
     <>
@@ -19,7 +20,7 @@ function App() {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/saved' element={<Saved/>}/>
         <Route path='/add' element={<AddRecipe/>}/>
-
+        <Route path='/:id' element={<FetchRecipeById/>}/>
           
     </Routes>
     </Router>
