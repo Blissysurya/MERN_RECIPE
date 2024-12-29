@@ -2,8 +2,10 @@ import React, { useEffect,useState } from 'react'
 import { AppContext } from './App_Context'
 import axios from 'axios'
 
+export const url="https://mern-recipe-6loy.onrender.com/api";
+
 function App_State(props) {
-  const url="http://localhost:3000/api";
+  
 
   const [token, setToken] = useState("");
   const [recipe, setRecipe] = useState([]);
