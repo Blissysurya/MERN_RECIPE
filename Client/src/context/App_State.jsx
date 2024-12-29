@@ -7,7 +7,7 @@ function App_State(props) {
 
   const [token, setToken] = useState("");
   const [recipe, setRecipe] = useState([]);
-
+  const [savedRecipe, setSavedRecipe] = useState([]);
   useEffect(() => {
     const fetchRecipe=async()=>{
 
@@ -24,6 +24,8 @@ function App_State(props) {
       setRecipe(api.data.recipe)
   }
   fetchRecipe();
+  getSavedRecipeById();
+
 } , [])
 
 
@@ -97,9 +99,37 @@ const register = async (name,gmail,password)=>{
     // console.log("login data", api)
     return api
   }
+  // save Recipe By Id
+  const savedRecipeById=async(id)=>{
+    const api=await axios.post(`${url}/${id}`,{},{
+      headers:{
+        "Content-Type":"application/json",
+        Auth:token
+      },
+      withCredentials:true
+    })
+    setToken(api.data.token)
+    // console.log("login data", api)
+    return api
+  }
+
+// get saved recipe
+  
+const getSavedRecipeById= async ()=>{
+  const api=await axios.get(`${url}/saved`,{
+    headers:{
+      "Content-Type":"application/json"
+    },
+    withCredentials:true
+  })
+
+  // console.log("login data", api)
+  setSavedRecipe(api.data.recipe)
+  // return api
+}
 
   return (
-    <AppContext.Provider value={{login,register,addRecipe,recipe,getRecipeById}}> {props.children}  </AppContext.Provider>
+    <AppContext.Provider value={{login,register,addRecipe,recipe,getRecipeById,savedRecipeById,savedRecipe}}> {props.children}  </AppContext.Provider>
   )
 }
 

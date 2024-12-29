@@ -5,7 +5,7 @@ function Navbar() {
     <>
     <div className="nav bg-dark p-2">
 
-        <div className="left"><h2 className='mx-3'>Recipe</h2></div>
+        <div className="left"><Link to={'/'} className='mx-3' style={{textDecoration:'none',color:'white', fontSize:'30px'}}>Recipe</Link></div>
         <div className="right">
             <Link to={"/login"} className="btn btn-primary mx-2">Login</Link>
             <Link to={"/register"} className="btn btn-warning mx-2">Register</Link>

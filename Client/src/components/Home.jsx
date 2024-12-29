@@ -1,13 +1,30 @@
 import React from 'react'
 import { AppContext } from '../context/App_Context'
 import { useContext } from 'react'
-
+import {useNavigate} from 'react-router-dom'
+import { ToastContainer, toast,Bounce } from 'react-toastify';
 function Home() {
+  const navigate=useNavigate();
+  const { recipe,savedRecipeById} = useContext(AppContext);
 
-  const { recipe } = useContext(AppContext);
-
+  const saved = async (id)=>{
+    const result= await savedRecipeById(id);
+     toast.success(result.data.message, {
+              position: "top-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              transition: Bounce,
+              });
+  }
   return (
     <>
+    <ToastContainer
+          position="top-right"/>
       <div className=' text-center mx-auto' style={{ width: "1200px" }}>
         <div className='row d-flex justify-content-center align-items-center ' style={{ gap: "" }}>
 
@@ -25,8 +42,8 @@ function Home() {
                   <h5 className="card-title">{data.title}</h5>
 
                   <div className='my-3'> 
-                    <button className="btn btn-primary mx-3">Save</button>
-                    <button className="btn btn-warning">View More</button>
+                    <button className="btn btn-primary mx-3" onClick={()=>{saved(data._id)}}>Save</button>
+                    <button onClick={()=>navigate(`/${data._id}`)} className="btn btn-warning">View More</button>
                   </div>
 
 
