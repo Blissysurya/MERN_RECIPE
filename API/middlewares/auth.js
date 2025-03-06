@@ -25,3 +25,6 @@ export const Authenticate = async (req,res,next) =>{
         }
 }   
 
+export const profile =async (req,res) =>{
+        res.json({user:req.user});
+}
